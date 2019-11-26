@@ -399,7 +399,7 @@ public class RecordView extends RelativeLayout {
         lastY = motionEvent.getRawY();
     }
 
-    protected void onActionUp(RecordButton recordBtn) {
+    public void onActionUp(RecordButton recordBtn) {
 
         if (isLocked && mStopView.getVisibility() != View.VISIBLE) {
             showLockedViews();
@@ -522,14 +522,6 @@ public class RecordView extends RelativeLayout {
     private void setCancelBounds(float cancelBounds, boolean convertDpToPixel) {
         float bounds = convertDpToPixel ? DpUtil.toPixel(cancelBounds, context) : cancelBounds;
         this.cancelBounds = bounds;
-    }
-
-    public void endRecording() {
-        if (recordListener != null && !isSwiped)
-            recordListener.onFinish(elapsedTime);
-        animationHelper.setStartRecorded(false);
-        if (!isSwiped)
-            playSound(RECORD_FINISHED);
     }
 
 }
