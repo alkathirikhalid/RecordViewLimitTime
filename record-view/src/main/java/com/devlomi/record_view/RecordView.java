@@ -524,6 +524,14 @@ public class RecordView extends RelativeLayout {
         this.cancelBounds = bounds;
     }
 
+    public void endRecording() {
+        if (recordListener != null && !isSwiped)
+            recordListener.onFinish(elapsedTime);
+        animationHelper.setStartRecorded(false);
+        if (!isSwiped)
+            playSound(RECORD_FINISHED);
+    }
+
 }
 
 
